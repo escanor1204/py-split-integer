@@ -4,8 +4,7 @@ from app.split_integer import split_integer
 def test_sum_of_the_parts_should_be_equal_to_value() -> None:
     value = 10
     number_of_parts = 2
-    parts = split_integer(value, number_of_parts)
-    assert sum(parts) == value
+    assert sum(split_integer(value, number_of_parts)) == value
 
 
 def test_should_split_into_equal_parts_when_value_divisible_by_parts() -> None:
@@ -34,3 +33,11 @@ def test_should_add_zeros_when_value_is_less_than_number_of_parts() -> None:
     number_of_parts = 6
     expected = [0, 1, 1, 1, 1, 1]
     assert split_integer(value, number_of_parts) == expected
+
+
+def test_the_difference_of_the_max_and_min_numbers() -> None:
+    value = 5
+    number_of_parts = 2
+    assert (max(split_integer(value, number_of_parts))
+            - min(split_integer(value, number_of_parts))
+            <= 1)
